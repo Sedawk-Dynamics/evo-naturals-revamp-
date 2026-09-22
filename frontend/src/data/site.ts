@@ -99,15 +99,18 @@ export const philosophy = {
   title: "Built on Nature. Guided by Knowledge.",
   body: "Combining traditional wellness wisdom with responsible innovation to support long-term vitality.",
   points: ["Supports Active Living", "Encourages Sustainable Health", "Designed for Holistic Wellbeing"],
-  // Glass image slider on the right (GlassSlider). Placeholder images from
-  // 21st.dev — swap in brand photos (e.g. "/images/slide-1.jpg") any time.
+  // Glass image slider on the right (GlassSlider). Images must live in
+  // public/ (same site): WebGL can't use images from other servers unless
+  // they allow it, and the original 21st.dev CDN only allows localhost —
+  // which is why the slider worked locally but not on Vercel.
+  // Placeholders from 21st.dev; swap in brand photos any time.
   slides: [
-    { title: "Ethereal Glow", description: "A soft, radiant light that illuminates the soul.", image: "https://cdn.21st.dev/assets/mirror/b2/b26ed9367c41626c7e61d837f0ea11cdaa3148a499e6bee171176886c8959950.jpg" },
-    { title: "Rose Mirage", description: "Lost in a desert of blooming dreams and endless horizons.", image: "https://cdn.21st.dev/assets/mirror/40/4028a63d1229ffb5d2eccc4c4f7640858afb1bbf639fc41b9a86a376a1202555.jpg" },
-    { title: "Velvet Mystique", description: "Wrapped in the deep, luxurious embrace of the night.", image: "https://cdn.21st.dev/assets/mirror/e6/e65a4e822aa4606715518071f6d85d2066b721b8e7e952e8ab6c051e87bc7a36.jpg" },
-    { title: "Golden Hour", description: "That fleeting moment when the world is dipped in gold.", image: "https://cdn.21st.dev/assets/mirror/87/87882922b01fff1934486f69e7ee39a5a5e05bf2b935bb03a916234be898ee0e.jpg" },
-    { title: "Midnight Dreams", description: "Where reality fades and imagination takes flight.", image: "https://cdn.21st.dev/assets/mirror/99/99ee55fd55281f879bd8cf899e4cb967a99a142d6b571765e46a88ad619ee9de.jpg" },
-    { title: "Silver Light", description: "A cool, metallic shimmer reflecting the urban pulse.", image: "https://cdn.21st.dev/assets/mirror/24/24ae667023524d2b6621597f09bf7062c9eadf03fe98d0f2c741637ede1131fc.jpg" },
+    { title: "Ethereal Glow", description: "A soft, radiant light that illuminates the soul.", image: "/images/slides/slide-1.webp" },
+    { title: "Rose Mirage", description: "Lost in a desert of blooming dreams and endless horizons.", image: "/images/slides/slide-2.webp" },
+    { title: "Velvet Mystique", description: "Wrapped in the deep, luxurious embrace of the night.", image: "/images/slides/slide-3.webp" },
+    { title: "Golden Hour", description: "That fleeting moment when the world is dipped in gold.", image: "/images/slides/slide-4.webp" },
+    { title: "Midnight Dreams", description: "Where reality fades and imagination takes flight.", image: "/images/slides/slide-5.webp" },
+    { title: "Silver Light", description: "A cool, metallic shimmer reflecting the urban pulse.", image: "/images/slides/slide-6.webp" },
   ],
 };
 
