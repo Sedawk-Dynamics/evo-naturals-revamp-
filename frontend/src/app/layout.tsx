@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
-import { SiteLoader } from "@/components/layout/SiteLoader";
 
 // Substitutes from DESIGN.md: Seed Sans -> Inter, Seed Sans Mono -> JetBrains Mono.
 // Inter is a variable font, so the 350 weight works.
@@ -22,8 +21,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body className="min-h-screen">
-        {/* First in <body>: its inline script paints the loader before the rest parses */}
-        <SiteLoader />
         {children}
       </body>
     </html>
