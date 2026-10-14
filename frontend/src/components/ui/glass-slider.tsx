@@ -361,7 +361,7 @@ export function GlassSlider({
                 aria-label={slide.title}
                 aria-current={i === active ? "true" : undefined}
                 onClick={() => goToRef.current(i)}
-                className="group py-8 text-left"
+                className="group min-h-[44px] py-8 text-left"
               >
                 <span className="relative block h-[2px] overflow-hidden bg-snow-white/25">
                   <span

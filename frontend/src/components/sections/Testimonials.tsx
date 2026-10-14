@@ -38,13 +38,13 @@ export function Testimonials() {
     <section className="bg-forest-depths text-snow-white">
       <h2 className="sr-only">{testimonials.title}</h2>
 
-      <Container className="py-64 md:py-96 lg:hidden">
+      <Container className="py-48 sm:py-64 md:py-96 lg:hidden">
         <Image src={banner} alt="" width={2103} height={748} sizes="100vw" className="w-full rounded-cards" />
-        <div className="no-scrollbar -mx-24 mt-32 flex snap-x snap-mandatory gap-16 overflow-x-auto px-24">
+        <div tabIndex={0} role="region" aria-label="Customer testimonials, scroll to read more" className="no-scrollbar -mx-16 mt-32 flex snap-x snap-mandatory gap-16 overflow-x-auto overscroll-x-contain scroll-px-16 px-16 sm:-mx-24 sm:scroll-px-24 sm:px-24">
           {testimonials.items.map((t) => (
             <figure
               key={t.name}
-              className="flex w-[300px] shrink-0 snap-start flex-col rounded-cards border-[1.5px] border-snow-white/20 p-24"
+              className="flex w-[min(300px,calc(100vw-48px))] shrink-0 snap-start flex-col rounded-cards border-[1.5px] border-snow-white/20 p-24"
             >
               <span className="text-heading leading-none font-light text-lime-pulse" aria-hidden="true">
                 “

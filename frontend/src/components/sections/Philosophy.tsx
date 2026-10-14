@@ -7,7 +7,7 @@ import { GlassSlider } from "@/components/ui/glass-slider";
 export function Philosophy() {
   return (
     <Section tone="dark">
-      <div className="grid items-center gap-64 lg:grid-cols-[2fr_3fr]">
+      <div className="grid items-center gap-32 sm:gap-64 lg:grid-cols-[2fr_3fr]">
         <div>
           <h2 className="text-heading-lg font-w350">{philosophy.title}</h2>
           <p className="mt-24 max-w-[440px] text-body font-w350 text-snow-white/80">{philosophy.body}</p>
@@ -26,7 +26,7 @@ export function Philosophy() {
 
         <GlassSlider
           slides={philosophy.slides}
-          className="aspect-[6/5] rounded-large-cards border-[1.5px] border-snow-white/20"
+          className="min-h-[360px] aspect-[6/5] rounded-large-cards border-[1.5px] border-snow-white/20"
         />
       </div>
     </Section>

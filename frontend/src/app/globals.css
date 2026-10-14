@@ -178,6 +178,21 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Keep section headings comfortable on narrow phones without changing desktop. */
+@media (max-width: 639px) {
+  :root {
+    --text-heading-lg: clamp(30px, 8vw, 40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Page canvas: Snow White, never #fff. Default text: Forest Depths 16/400/1.5 */

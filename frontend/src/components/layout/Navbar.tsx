@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { nav, site } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -25,7 +25,26 @@ const getServerScrolled = () => false;
 // scrolls it turns to frosted Snow White glass.
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const scrolled = useSyncExternalStore(subscribe, getScrolled, getServerScrolled);
+
+  useEffect(() => {
+    if (!open) return;
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
 
   const surface = open
     ? "bg-snow-white"
@@ -37,7 +56,7 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${surface}`}
     >
-      <div className="flex h-[72px] items-center justify-between px-24 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-48">
+      <div className="flex h-[72px] items-center justify-between gap-8 px-16 sm:px-24 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-48">
         <Link href="/" aria-label={`${site.name} home`} className="justify-self-start">
           <Logo />
         </Link>
@@ -62,11 +81,13 @@ export function Navbar() {
             </Button>
           </div>
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-40 w-40 items-center justify-center rounded-full lg:hidden"
+            className="flex h-48 w-48 shrink-0 items-center justify-center rounded-full lg:hidden"
           >
             <Icon name={open ? "close" : "menu"} size={24} />
           </button>
@@ -74,8 +95,8 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-warm-stone px-24 pt-16 pb-32 lg:hidden">
-          <nav className="flex flex-col">
+        <div id="mobile-navigation" className="absolute inset-x-0 top-full max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain border-t border-warm-stone bg-snow-white px-16 pt-16 pb-32 shadow-lg sm:px-24 lg:hidden">
+          <nav aria-label="Mobile navigation" className="flex flex-col">
             {nav.links.map((link) => (
               <Link
                 key={link.label}

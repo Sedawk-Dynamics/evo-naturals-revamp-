@@ -19,7 +19,7 @@ const variants: Record<Variant, string> = {
 const sizes = { md: "py-16", sm: "py-[12px]" };
 
 const base =
-  "inline-flex items-center justify-center gap-8 rounded-buttons border-[1.5px] px-24 text-body-sm leading-none font-normal whitespace-nowrap transition-colors";
+  "inline-flex min-h-[44px] items-center justify-center gap-8 rounded-buttons border-[1.5px] px-24 text-body-sm leading-none font-normal whitespace-nowrap transition-colors";
 
 type Props = {
   children: ReactNode;

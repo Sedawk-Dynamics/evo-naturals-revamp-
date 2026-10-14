@@ -19,7 +19,7 @@ export function Section({
   const colors =
     tone === "dark" ? "bg-forest-depths text-snow-white" : "bg-snow-white text-forest-depths";
   return (
-    <section id={id} className={`${colors} py-64 md:py-96 ${className}`}>
+    <section id={id} className={`${colors} py-48 sm:py-64 md:py-96 ${className}`}>
       <Container wide={wide}>{children}</Container>
     </section>
   );
@@ -37,5 +37,5 @@ export function Container({
   className?: string;
 }) {
   const width = wide ? "max-w-[1920px] lg:px-48" : "max-w-page";
-  return <div className={`mx-auto w-full ${width} px-24 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full min-w-0 ${width} px-16 sm:px-24 ${className}`}>{children}</div>;
 }

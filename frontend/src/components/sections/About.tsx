@@ -8,7 +8,7 @@ export function About() {
   return (
     <Section id="about">
       <div className="grid items-center gap-48 lg:grid-cols-2 lg:gap-64">
-        <div className="flex aspect-[5/4] items-center justify-center rounded-large-cards bg-warm-stone p-48">
+        <div className="flex aspect-[5/4] items-center justify-center rounded-large-cards bg-warm-stone p-24 sm:p-48">
           <Image
             src={site.logoFull}
             alt={`${site.name} logo`}

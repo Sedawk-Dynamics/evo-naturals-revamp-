@@ -18,14 +18,14 @@ export function Wellness() {
       </p>
       <ul className="mt-24 grid gap-16 sm:grid-cols-2 lg:grid-cols-5">
         {wellness.categories.map((c, i) => (
-          <li key={c} className="flex min-h-[200px] flex-col rounded-cards bg-warm-stone p-24">
+          <li key={c} className="flex min-h-[136px] flex-col rounded-cards bg-warm-stone p-24 sm:min-h-[200px]">
             <div className="flex items-center justify-between">
               <span className="font-seed-sans-mono text-label font-light tracking-mono text-pewter">
                 0{i + 1}
               </span>
               <Icon name={categoryIcons[i]} size={22} />
             </div>
-            <h3 className="mt-auto pt-40 text-subheading font-w350">{c}</h3>
+            <h3 className="mt-auto pt-24 text-subheading font-w350 sm:pt-40">{c}</h3>
           </li>
         ))}
       </ul>

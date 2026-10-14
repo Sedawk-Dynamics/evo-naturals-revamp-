@@ -6,9 +6,9 @@ import { Icon } from "@/components/ui/Icon";
 // Forest Depths 12px/500 uppercase text, small icon + message + inline link.
 export function PromoBanner() {
   return (
-    <div className="flex h-40 items-center justify-center gap-8 bg-lime-pulse px-24 text-label leading-none font-medium text-forest-depths uppercase">
+    <div className="flex min-h-40 flex-wrap items-center justify-center gap-x-8 bg-lime-pulse px-16 py-8 text-center text-label leading-label font-medium text-forest-depths uppercase sm:px-24">
       <Icon name="leaf" size={14} className="shrink-0" />
-      <span className="truncate">{promo.text}</span>
+      <span>{promo.text}</span>
       <Link
         href={promo.link.href}
         className="shrink-0 underline decoration-[1.5px] underline-offset-[3px]"

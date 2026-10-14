@@ -32,7 +32,7 @@ export function Footer() {
             />
           </div>
 
-          <div className="grid gap-40 sm:grid-cols-3">
+          <div className="grid min-w-0 gap-32 sm:grid-cols-3 sm:gap-24 xl:gap-40">
             <FooterColumn title="Quick Links">
               {footer.quickLinks.map((l) => (
                 <FooterLink key={l.label} href={l.href}>
@@ -59,7 +59,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-96 border-t border-snow-white/20 pt-32">
+        <div className="mt-48 border-t border-snow-white/20 pt-32 md:mt-96">
           <p className="text-label text-snow-white/60">
             © {year} {site.legalName}. All rights reserved.
           </p>
@@ -71,7 +71,7 @@ export function Footer() {
 
 function FooterColumn({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div>
+    <div className="min-w-0">
       <h3 className="font-seed-sans-mono text-label font-light tracking-mono text-snow-white/60 uppercase">
         {title}
       </h3>
@@ -83,7 +83,7 @@ function FooterColumn({ title, children }: { title: string; children: ReactNode 
 function FooterLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <li>
-      <Link href={href} className="text-body-sm break-words hover:underline">
+      <Link href={href} className="inline-flex min-h-[44px] max-w-full items-center text-body-sm [overflow-wrap:anywhere] hover:underline">
         {children}
       </Link>
     </li>

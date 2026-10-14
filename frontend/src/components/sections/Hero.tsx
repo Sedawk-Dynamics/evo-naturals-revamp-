@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <div className="-mt-[72px] bg-forest-depths">
       <section className="relative overflow-hidden rounded-b-large-cards bg-[#f2ece2] lg:h-[calc(100svh-40px)] lg:max-h-[900px] lg:min-h-[640px]">
-        <Container className="relative z-10 pt-[136px] pb-48 lg:flex lg:h-full lg:items-center lg:pt-[72px] lg:pb-0">
+        <Container className="relative z-10 pt-[104px] pb-32 sm:pt-[120px] sm:pb-48 lg:flex lg:h-full lg:items-center lg:pt-[72px] lg:pb-0">
           <div className="max-w-[560px] lg:max-w-[500px]">
             <h1 className="text-heading-lg font-w350 md:text-display">{hero.title}</h1>
             <p className="mt-24 max-w-[460px] text-body-sm">{hero.body}</p>
@@ -28,7 +28,7 @@ export function Hero() {
               ))}
             </ul>
 
-            <div className="mt-40 flex flex-wrap gap-16">
+            <div className="mt-32 grid grid-cols-2 gap-8 sm:mt-40 sm:flex sm:flex-wrap sm:gap-16">
               <Button href={hero.primary.href} magnetic>
                 {hero.primary.label}
               </Button>
