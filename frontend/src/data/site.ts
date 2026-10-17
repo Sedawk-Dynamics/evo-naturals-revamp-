@@ -4,6 +4,8 @@
 // (Later the backend can return this same shape from an API.)
 // ==========================================================================
 
+import { blogPosts } from "./blog";
+
 export type Accent = "forest-depths" | "sage-moss" | "olive-gold" | "eucalyptus";
 
 export const site = {
@@ -26,17 +28,17 @@ export const contact = {
 
 export const promo = {
   text: `Questions? Call us at ${contact.phone}`,
-  link: { label: "Contact us", href: "#contact" },
+  link: { label: "Contact us", href: "/contact" },
 };
 
 export const nav = {
   links: [
-    { label: "Products", href: "#products" },
-    { label: "About Us", href: "#about" },
-    { label: "Blog", href: "#articles" },
-    { label: "Contact Us", href: "#contact" },
+    { label: "Products", href: "/shop" },
+    { label: "About Us", href: "/#about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact Us", href: "/contact" },
   ],
-  cta: { label: "Shop Now", href: "#products" },
+  cta: { label: "Shop Now", href: "/shop" },
 };
 
 // --- Hero ----------------------------------------------------------------
@@ -44,8 +46,8 @@ export const hero = {
   title: "Feel Balanced. Think Clear. Live Naturally.",
   body: "Support your everyday well-being with thoughtfully formulated natural solutions designed to align body, mind, and lifestyle.",
   benefits: ["Promotes Mental Clarity", "Encourages Calm Energy", "Supports Daily Wellness Rhythm"],
-  primary: { label: "Shop Now", href: "#products" },
-  secondary: { label: "About Us", href: "#about" },
+  primary: { label: "Shop Now", href: "/shop" },
+  secondary: { label: "About Us", href: "/#about" },
 };
 
 // --- Products (dark) -----------------------------------------------------
@@ -56,6 +58,7 @@ export type Product = {
   label: string; // short text printed on the jar illustration
   accent: Accent;
   href: string;
+  description?: string;
   price?: string;
   image?: string; // product photo; without one, a jar illustration is drawn
   comingSoon?: boolean; // shown with a "Coming soon" badge, no price or button
@@ -71,7 +74,8 @@ export const products: { title: string; items: Product[] } = {
       label: "CALMROOT",
       price: "₹799",
       accent: "forest-depths",
-      href: "#",
+      href: "/shop/calmroot",
+      description: "Meet CALMROOT, the Evo Naturals capsule formula featuring Ashwagandha KSM-66®. Each bottle contains 60 capsules, in a simple format for your everyday wellness routine.",
       image: "/images/products/calmroot.webp",
     },
     // When one launches: give it a name, price and image, and drop comingSoon
@@ -122,7 +126,7 @@ export const about = {
     "Our philosophy goes beyond short-term health goals. We focus on sustainable wellbeing — supporting individuals in building a balanced, active, and mindful life.",
     "We combine natural inspiration with responsible innovation to create wellness solutions that integrate seamlessly into daily routines.",
   ],
-  cta: { label: "Contact Us", href: "#contact" },
+  cta: { label: "Contact Us", href: "/contact" },
 };
 
 // --- Testimonials (dark) -------------------------------------------------
@@ -157,19 +161,21 @@ export const testimonials = {
 };
 
 // --- Articles (light) ----------------------------------------------------
-export const articles = {
-  title: "Articles",
-  link: { label: "View all", href: "#articles" },
-  items: [
-    "Sample -1",
-    "Organic dairy farming calls for even healthier cows",
-    "Healthy, resilient cows for organic dairy farming",
-    "What breeds can I choose for organic dairy farming?",
-    "Breeding solutions for organic dairy farmers",
-    "Why is Saved Feed important in organic farming?",
-    "What’s going on in cattle breeding organic farm",
-    "Investing in feed efficiency can reduce cattle emissions",
-  ].map((title) => ({ title, href: "#" })),
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  image?: string;
+  imageAlt?: string;
+  paragraphs: string[];
+};
+
+// Add supplied blog content here. Cards and detail pages share this source.
+export const articles: { title: string; link: { label: string; href: string }; items: BlogPost[] } = {
+  title: "The Evo Journal",
+  link: { label: "View all posts", href: "/blog" },
+  items: blogPosts,
 };
 
 // --- Footer --------------------------------------------------------------
@@ -178,9 +184,9 @@ export const footer = {
     "EvoNaturals Private Limited is dedicated to transforming healthcare management through holistic and integrated solutions.",
   quickLinks: [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "#about" },
-    { label: "Blog", href: "#articles" },
-    { label: "Contact Us", href: "#contact" },
+    { label: "About Us", href: "/#about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact Us", href: "/contact" },
   ],
   // TODO: these pages don't exist yet
   importantLinks: [

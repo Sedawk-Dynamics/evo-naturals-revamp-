@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { products, type Product } from "@/data/site";
 import { Section } from "@/components/ui/Section";
@@ -11,10 +12,13 @@ import { accentBg } from "@/lib/accents";
 // wide (edge to edge, 48px margins) so the cards read big, like a shelf.
 // Launched products show their photo, price and Shop Now; the rest show a
 // faded jar with a "Coming soon" badge.
-export function ProductShowcase() {
+export function ProductShowcase({ showShopLink = true }: { showShopLink?: boolean }) {
   return (
     <Section id="products" tone="dark" wide>
-      <h2 className="text-heading-lg font-w350 md:text-display">{products.title}</h2>
+      <div className="flex flex-wrap items-center justify-between gap-24">
+        <h2 className="text-heading-lg font-w350 md:text-display">{products.title}</h2>
+        {showShopLink && <Button href="/shop" variant="ghost">Shop all products</Button>}
+      </div>
 
       {/* One column until three fit side by side (two columns would leave
           the third card alone on its own row) */}
@@ -29,7 +33,7 @@ export function ProductShowcase() {
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="flex flex-col">
+    <article className="relative flex flex-col">
       {product.image ? (
         <div className="relative aspect-square overflow-hidden rounded-cards bg-warm-stone">
           <Image
@@ -61,7 +65,7 @@ function ProductCard({ product }: { product: Product }) {
       <p className="mt-24 font-seed-sans-mono text-label font-light tracking-mono text-snow-white/60 uppercase">
         {product.tagline}
       </p>
-      <h3 className="mt-8 text-subheading font-w350 xl:text-heading">{product.name}</h3>
+      <h3 className="mt-8 text-subheading font-w350 xl:text-heading">{product.comingSoon ? product.name : <Link href={product.href} className="after:absolute after:inset-0 after:rounded-cards hover:underline">{product.name}</Link>}</h3>
 
       {/* mt-auto: price rows line up even when a name wraps to two lines.
           min-h = 16px top padding + a 44px row, the height of the button,
@@ -79,7 +83,7 @@ function ProductCard({ product }: { product: Product }) {
         ) : (
           <>
             <span className="text-body-sm font-medium xl:text-body">{product.price}</span>
-            <Button href={product.href} variant="ghost" size="sm">
+            <Button href={product.href} variant="ghost" size="sm" className="relative z-10">
               Shop Now
             </Button>
           </>

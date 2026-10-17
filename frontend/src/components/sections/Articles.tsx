@@ -1,39 +1,28 @@
 import Link from "next/link";
-import { articles, type Accent } from "@/data/site";
+import Image from "next/image";
+import { articles } from "@/data/site";
 import { Section } from "@/components/ui/Section";
 import { TextLink } from "@/components/ui/TextLink";
 import { BranchIllustration } from "@/components/ui/BranchIllustration";
-import { accentBg } from "@/lib/accents";
 
-// Tile colours cycle through the product accents (no article images yet)
-const tileAccents: Accent[] = ["sage-moss", "eucalyptus", "olive-gold"];
-
-export function Articles() {
-  return (
-    <Section id="articles">
-      <div className="flex flex-col gap-24 md:flex-row md:items-end md:justify-between">
-        <h2 className="text-heading-lg font-w350">{articles.title}</h2>
-        <TextLink href={articles.link.href}>{articles.link.label}</TextLink>
-      </div>
-
-      <div className="mt-48 grid gap-x-16 gap-y-40 sm:grid-cols-2 lg:grid-cols-4">
-        {articles.items.map((a, i) => (
-          <Link key={a.title} href={a.href} className="group flex flex-col">
-            <div
-              className={`relative aspect-[4/3] overflow-hidden rounded-cards ${accentBg[tileAccents[i % tileAccents.length]]}`}
-            >
-              <BranchIllustration
-                seed={23 + i * 17}
-                color="#fcfcf7"
-                className="absolute top-1/2 left-1/2 w-[90%] -translate-x-1/2 -translate-y-1/2 opacity-60 transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <h3 className="mt-16 text-body font-w350 decoration-[1.5px] underline-offset-[4px] group-hover:underline">
-              {a.title}
-            </h3>
-          </Link>
-        ))}
-      </div>
-    </Section>
-  );
+export function Articles({ fullPage = false }: { fullPage?: boolean }) {
+  const Heading = fullPage ? "h1" : "h2";
+  const posts = fullPage ? articles.items : articles.items.slice(0, 3);
+  return <Section id="articles">
+    <div className="flex flex-wrap items-end justify-between gap-24">
+      <div><p className="mb-16 font-seed-sans-mono text-label uppercase tracking-mono">Blog</p><Heading className="text-heading-lg font-w350 md:text-display">{articles.title}</Heading></div>
+      {!fullPage && <TextLink href={articles.link.href}>{articles.link.label}</TextLink>}
+    </div>
+    <div className="mt-48 grid gap-32 md:grid-cols-2">
+      {posts.map((post, i) => <Link key={post.slug} href={`/blog/${post.slug}`} className="group flex flex-col">
+        <div className={`relative aspect-[16/9] overflow-hidden rounded-cards ${i % 2 ? "bg-eucalyptus" : "bg-sage-moss"}`}>
+          {post.image ? <Image src={post.image} alt={post.imageAlt ?? post.title} fill sizes="(min-width: 1200px) 576px, (min-width: 768px) 50vw, 100vw" className="object-contain" /> : <BranchIllustration seed={23 + i * 17} color="#fcfcf7" className="absolute inset-0 h-full w-full opacity-60 transition-transform duration-300 group-hover:scale-105" />}
+        </div>
+        <p className="mt-16 text-label uppercase tracking-mono text-pewter">{post.category}</p>
+        <h3 className="mt-24 text-subheading font-w350 group-hover:underline">{post.title}</h3>
+        <p className="mt-16 text-body-sm text-pewter">{post.excerpt}</p>
+        <span className="mt-24 text-body-sm underline underline-offset-4">Read story <span aria-hidden="true">→</span></span>
+      </Link>)}
+    </div>
+  </Section>;
 }
