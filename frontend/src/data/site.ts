@@ -61,6 +61,14 @@ export type Product = {
   description?: string;
   price?: string;
   image?: string; // product photo; without one, a jar illustration is drawn
+  images?: { src: string; alt: string }[];
+  story?: {
+    eyebrow: string;
+    headline: string;
+    ingredient: string;
+    ingredientNote: string;
+    introduction: string;
+  };
   comingSoon?: boolean; // shown with a "Coming soon" badge, no price or button
 };
 
@@ -76,12 +84,72 @@ export const products: { title: string; items: Product[] } = {
       accent: "forest-depths",
       href: "/shop/calmroot",
       description: "Meet CALMROOT, the Evo Naturals capsule formula featuring Ashwagandha KSM-66®. Each bottle contains 60 capsules, in a simple format for your everyday wellness routine.",
-      image: "/images/products/calmroot.webp",
+      image: "/images/products/calmroot-front.png",
+      story: {
+        eyebrow: "A moment for yourself",
+        headline: "Make room for your daily ritual.",
+        ingredient: "Ashwagandha KSM-66®",
+        ingredientNote: "The featured ingredient in CALMROOT, presented in a capsule format.",
+        introduction: "Meet a simpler way to make space for wellness. CALMROOT brings Ashwagandha KSM-66® into a 60-capsule bottle, with a format that fits neatly into your personal routine.",
+      },
+      images: [
+        { src: "/images/products/calmroot-front.png", alt: "CALMROOT capsules bottle" },
+        { src: "/images/products/calmroot-packaging.png", alt: "CALMROOT capsules bottle and box" },
+      ],
+    },
+    {
+      id: "mucuna-quench",
+      name: "MUCUNA QUENCH Capsules",
+      tagline: "Kaunch Beej · 60 capsules",
+      label: "MUCUNA QUENCH",
+      accent: "eucalyptus",
+      href: "/shop/mucuna-quench",
+      description: "Meet MUCUNA QUENCH, the Evo Naturals capsule formula featuring Kaunch Beej (Mucuna pruriens). Each bottle contains 60 capsules. Contact our team for ingredient, usage, pricing, and availability information.",
+      image: "/images/products/mucuna-quench-front.png",
+      story: {
+        eyebrow: "Your routine. Your rhythm.",
+        headline: "A considered addition to everyday life.",
+        ingredient: "Kaunch Beej",
+        ingredientNote: "Also known as Mucuna pruriens, the featured ingredient in MUCUNA QUENCH.",
+        introduction: "Discover MUCUNA QUENCH, our Kaunch Beej capsule formula for adults. A 60-capsule format, thoughtfully presented for those who take an interest in their everyday wellness routine.",
+      },
+      images: [
+        { src: "/images/products/mucuna-quench-front.png", alt: "MUCUNA QUENCH capsules bottle" },
+        { src: "/images/products/mucuna-quench-packaging.png", alt: "MUCUNA QUENCH capsules bottle and box" },
+      ],
     },
     // When one launches: give it a name, price and image, and drop comingSoon
-    { id: "coming-soon-1", name: "New Formula", tagline: "In development", label: "SOON", accent: "sage-moss", href: "#", comingSoon: true },
     { id: "coming-soon-2", name: "New Formula", tagline: "In development", label: "SOON", accent: "eucalyptus", href: "#", comingSoon: true },
   ],
+};
+
+export const productPage = {
+  collection: "Evo Naturals / The capsule collection",
+  enquiry: "Enquire about this product",
+  explore: "Explore the formula",
+  detailsLabel: "01 / A closer look",
+  detailsTitle: "Small details. Thoughtfully considered.",
+  facts: [
+    { value: "60", label: "Capsules per bottle", description: "A clearly labelled capsule count in every bottle." },
+    { value: "Capsule", label: "Product format", description: "A straightforward format for your personal wellness routine." },
+    { value: "Adults", label: "Labelled for", description: "A nutraceutical product intended for adults." },
+  ],
+  ingredientLabel: "02 / The featured ingredient",
+  ingredientFooter: "Want the full picture? Ask our team for the complete ingredient list and product label.",
+  packLabel: "Bottle & packaging",
+  questionsLabel: "03 / Good to know",
+  questionsTitle: "A little clarity before you choose.",
+  questions: [
+    { question: "What comes in a bottle?", answer: "Each bottle contains 60 capsules. You can explore the bottle and outer packaging using the product gallery above." },
+    { question: "Where can I find ingredients and directions?", answer: "Contact our team for the complete ingredient list, product label, and directions for your chosen formula." },
+    { question: "How do I check the price and availability?", answer: "Use the enquiry button to contact Evo Naturals. Our team can confirm current pricing, availability, and ordering details." },
+  ],
+  closingLabel: "Let’s make it personal",
+  closingTitle: "Your next step starts with a conversation.",
+  closingBody: "Have a question about the formula or how to order? We’re here to help you get to know the product.",
+  relatedLabel: "Continue exploring",
+  relatedTitle: "Meet the rest of the collection.",
+  relatedLink: "Discover this formula",
 };
 
 // --- Wellness intro + categories (light) --------------------------------

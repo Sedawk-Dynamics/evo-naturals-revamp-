@@ -33,16 +33,18 @@ export function ProductShowcase({ showShopLink = true }: { showShopLink?: boolea
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="relative flex flex-col">
+    <article className="product-card relative flex flex-col">
       {product.image ? (
-        <div className="relative aspect-square overflow-hidden rounded-cards bg-warm-stone">
+        <div className="product-photo-stage relative aspect-square overflow-hidden rounded-cards">
+          <div className="absolute inset-16 md:inset-24">
           <Image
             src={product.image}
             alt={product.name}
             fill
             sizes="(min-width: 1920px) 600px, (min-width: 768px) 33vw, 100vw"
-            className="object-cover"
+            className="product-photo object-contain"
           />
+          </div>
         </div>
       ) : (
         <div
