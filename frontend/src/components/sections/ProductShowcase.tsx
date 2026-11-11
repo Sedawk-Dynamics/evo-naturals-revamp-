@@ -17,7 +17,7 @@ export function ProductShowcase({ showShopLink = true }: { showShopLink?: boolea
     <Section id="products" tone="dark" wide>
       <div className="flex flex-wrap items-center justify-between gap-24">
         <h2 className="text-heading-lg font-w350 md:text-display">{products.title}</h2>
-        {showShopLink && <Button href="/shop" variant="ghost">Shop all products</Button>}
+        {showShopLink && <Button href="https://shop.evonaturals.co.in/" variant="ghost">Shop all products</Button>}
       </div>
 
       {/* One column until three fit side by side (two columns would leave

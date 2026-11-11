@@ -21,7 +21,7 @@ export const site = {
 export const contact = {
   phone: "+91 95877 77461",
   phoneHref: "tel:+919587777461",
-  email: "info@evonaturals.com",
+  email: "info@evonaturals.co.in",
   address:
     "B-5, Commercial Complex, VKIA Road No. 5, Road No-5 VKIA, Jaipur – 302013, Rajasthan, India",
 };
@@ -33,12 +33,12 @@ export const promo = {
 
 export const nav = {
   links: [
-    { label: "Products", href: "/shop" },
+    { label: "Products", href: "https://shop.evonaturals.co.in/" },
     { label: "About Us", href: "/#about" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "https://shop.evonaturals.co.in/blog/" },
     { label: "Contact Us", href: "/contact" },
   ],
-  cta: { label: "Shop Now", href: "/shop" },
+  cta: { label: "Shop Now", href: "https://shop.evonaturals.co.in/" },
 };
 
 // --- Hero ----------------------------------------------------------------
@@ -46,7 +46,7 @@ export const hero = {
   title: "Feel Balanced. Think Clear. Live Naturally.",
   body: "Support your everyday well-being with thoughtfully formulated natural solutions designed to align body, mind, and lifestyle.",
   benefits: ["Promotes Mental Clarity", "Encourages Calm Energy", "Supports Daily Wellness Rhythm"],
-  primary: { label: "Shop Now", href: "/shop" },
+  primary: { label: "Shop Now", href: "https://shop.evonaturals.co.in/" },
   secondary: { label: "About Us", href: "/#about" },
 };
 
@@ -82,7 +82,7 @@ export const products: { title: string; items: Product[] } = {
       label: "CALMROOT",
       price: "₹799",
       accent: "forest-depths",
-      href: "/shop/calmroot",
+      href: "https://shop.evonaturals.co.in/",
       description: "Meet CALMROOT, the Evo Naturals capsule formula featuring Ashwagandha KSM-66®. Each bottle contains 60 capsules, in a simple format for your everyday wellness routine.",
       image: "/images/products/calmroot-front.png",
       story: {
@@ -103,7 +103,7 @@ export const products: { title: string; items: Product[] } = {
       tagline: "Kaunch Beej · 60 capsules",
       label: "MUCUNA QUENCH",
       accent: "eucalyptus",
-      href: "/shop/mucuna-quench",
+      href: "https://shop.evonaturals.co.in/",
       description: "Meet MUCUNA QUENCH, the Evo Naturals capsule formula featuring Kaunch Beej (Mucuna pruriens). Each bottle contains 60 capsules. Contact our team for ingredient, usage, pricing, and availability information.",
       image: "/images/products/mucuna-quench-front.png",
       story: {
@@ -242,7 +242,7 @@ export type BlogPost = {
 // Add supplied blog content here. Cards and detail pages share this source.
 export const articles: { title: string; link: { label: string; href: string }; items: BlogPost[] } = {
   title: "The Evo Journal",
-  link: { label: "View all posts", href: "/blog" },
+  link: { label: "View all posts", href: "https://shop.evonaturals.co.in/blog/" },
   items: blogPosts,
 };
 
@@ -253,20 +253,19 @@ export const footer = {
   quickLinks: [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/#about" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "https://shop.evonaturals.co.in/blog/" },
     { label: "Contact Us", href: "/contact" },
   ],
-  // TODO: these pages don't exist yet
   importantLinks: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms & Conditions", href: "#" },
-    { label: "Return & Refund Policy", href: "#" },
-    { label: "Shipping Policy", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms & Conditions", href: "/terms-and-conditions" },
+    { label: "Return & Refund Policy", href: "/refund-and-returns-policy" },
+    { label: "Shipping Policy", href: "/shipping-policy" },
   ],
-  // TODO: replace "#" with the real profile URLs
   social: [
-    { name: "Instagram", href: "#" },
-    { name: "Facebook", href: "#" },
-    { name: "X", href: "#" },
-  ] as { name: "Instagram" | "Facebook" | "X"; href: string }[],
+    { name: "Instagram", href: "https://www.instagram.com/evonaturalsprivatelimited/?hl=en" },
+    { name: "Facebook", href: "https://www.facebook.com/evonaturalspvtltd/" },
+    { name: "X", href: "https://x.com/Evonaturals_" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/evonaturals-private-limited/about/" },
+  ] as { name: "Instagram" | "Facebook" | "X" | "LinkedIn"; href: string }[],
 };

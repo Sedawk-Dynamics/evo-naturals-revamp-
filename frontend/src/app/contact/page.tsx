@@ -58,9 +58,9 @@ export default function ContactPage() {
         <div className="mt-64 flex flex-col gap-24 border-t border-frosted-glass pt-32 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-subheading font-w350">Get to know Evo Naturals.</h2>
-            <p className="mt-8 text-body-sm text-pewter">Explore our collection or find fresh perspectives in <Link href="/blog" className="underline underline-offset-4">the Evo Journal</Link>.</p>
+            <p className="mt-8 text-body-sm text-pewter">Explore our collection or find fresh perspectives in <Link href="https://shop.evonaturals.co.in/blog/" className="underline underline-offset-4">the Evo Journal</Link>.</p>
           </div>
-          <Button href="/shop" variant="inverted">Explore our products</Button>
+          <Button href="https://shop.evonaturals.co.in/" variant="inverted">Explore our products</Button>
         </div>
       </Section>
     </PageShell>
